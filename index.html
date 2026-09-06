@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Warwick AI Safety Initiative</title>
+  <meta name="description" content="WAISI is the University of Warwick's student group for technical AI safety: reading groups, an ARENA-based bootcamp, talks and research projects.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="wordmark" href="index.html">WAISI<span>.</span></a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="index.html" aria-current="page">About</a>
+      <a href="people.html">People</a>
+      <a href="https://waisi.substack.com">Blog</a>
+      <a href="apply.html">Apply</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <!-- Decorative "alignment field": tick marks that mostly agree, a few that don't -->
+  <svg class="field" id="alignment-field" aria-hidden="true" preserveAspectRatio="xMidYMid slice"></svg>
+  <div class="inner">
+    <h1>How can we mitigate catastrophic risk from advanced AI?</h1>
+    <p>The Warwick AI Safety Initiative is a community working on the technical and strategic problems of making powerful AI systems safe. We run research projects, a hands-on upskilling bootcamp, and hackathons.</p>
+    <a class="button" href="apply.html">Apply to the bootcamp</a>
+    <a class="button quiet" href="contact.html">Get in touch</a>
+  </div>
+</section>
+
+<main>
+  <h2>What we do</h2>
+  <div class="activities">
+    <div class="activity">
+      <h3>Technical bootcamp</h3>
+      <p>A termly upskilling programme built on the ARENA curriculum: transformer internals, mechanistic interpretability, RL and evals, taught through weekly coding sessions.</p>
+    </div>
+    <div class="activity">
+      <h3>Research projects</h3>
+      <p>Small teams work on open problems and hackathon projects, with the aim of producing publishable write-ups and building genuine research experience.</p>
+    </div>
+    <div class="activity">
+      <h3>Talks and socials</h3>
+      <p>Guest speakers from safety labs and academia, plus regular socials — a low-commitment way to meet the community.</p>
+    </div>
+  </div>
+
+  <h2>Why AI safety</h2>
+  <p>AI capabilities are advancing quickly, and the field of people working to make these systems safe, interpretable and controllable is still small. Students with strong mathematical and technical backgrounds are unusually well placed to contribute — and Warwick has plenty of them.</p>
+  <p>You don't need prior machine learning experience to get involved. The bootcamp starts from foundations, and our talks and socials are open to anyone curious about the problems.</p>
+</main>
+
+<footer class="site-footer">
+  <div class="inner">
+    <div>
+      <a class="wordmark" href="index.html" style="color:#f0e6f8">WAISI<span>.</span></a>
+      <p class="fine">Warwick AI Safety Initiative - not associated with the University of Warwick.</p>
+    </div>
+    <nav class="site-nav" aria-label="Footer">
+      <a href="index.html">About</a>
+      <a href="people.html">People</a>
+      <a href="https://waisi.substack.com">Blog</a>
+      <a href="apply.html">Apply</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+/* Hero tick-mark field. Marks near the pointer turn gold and rotate,
+   then ease back when it moves away. Decorative only. */
+(function () {
+  var svg = document.getElementById("alignment-field");
+  var hero = document.querySelector(".hero");
+  if (!svg || !hero) return;
+
+  var W = 1200, H = 480, gap = 46, len = 14;
+  var GOLD = "#b99a45", MUTED = "#8a6aa6";
+  var TOUCH = 42;        /* marks this close to the pointer always react (SVG units) */
+  var RADIUS = 120;      /* a few "keen" marks also react out to this distance */
+  var KEEN = 0.18;       /* fraction of marks that are keen */
+  var EXTRA_TURN = 38;   /* max additional rotation in degrees */
+
+  svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+  var ns = "http://www.w3.org/2000/svg";
+  var marks = [];
+
+  for (var y = gap / 2; y < H; y += gap) {
+    for (var x = gap / 2; x < W; x += gap) {
+      var stray = Math.random() < 0.07;
+      var angle = stray ? Math.random() * 180 : -18 + (Math.random() * 10 - 5);
+      var line = document.createElementNS(ns, "line");
+      line.setAttribute("x1", -len / 2); line.setAttribute("y1", 0);
+      line.setAttribute("x2", len / 2);  line.setAttribute("y2", 0);
+      line.style.stroke = stray ? GOLD : MUTED;
+      line.style.strokeWidth = stray ? 2.5 : 1.5;
+      line.setAttribute("stroke-linecap", "round");
+      line.style.transform = "translate(" + x + "px," + y + "px) rotate(" + angle + "deg)";
+      line.style.transition = "transform .35s ease, stroke .5s ease, stroke-width .5s ease";
+      svg.appendChild(line);
+      marks.push({ el: line, x: x, y: y, angle: angle, stray: stray, keen: Math.random() < KEEN });
+    }
+  }
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  var pt = svg.createSVGPoint(), raf = null, pending = null;
+
+  function apply(e) {
+    pt.x = e.clientX; pt.y = e.clientY;
+    var ctm = svg.getScreenCTM();
+    if (!ctm) return;
+    var p = pt.matrixTransform(ctm.inverse());
+    for (var i = 0; i < marks.length; i++) {
+      var m = marks[i];
+      var d = Math.hypot(m.x - p.x, m.y - p.y);
+      var reach = m.keen ? RADIUS : TOUCH;
+      if (d < reach) {
+        var t = 1 - d / reach;
+        m.el.style.transform = "translate(" + m.x + "px," + m.y + "px) rotate(" + (m.angle + t * EXTRA_TURN) + "deg)";
+        m.el.style.stroke = GOLD;
+        m.el.style.strokeWidth = 2.5;
+      } else if (!m.stray) {
+        m.el.style.transform = "translate(" + m.x + "px," + m.y + "px) rotate(" + m.angle + "deg)";
+        m.el.style.stroke = MUTED;
+        m.el.style.strokeWidth = 1.5;
+      }
+    }
+  }
+
+  hero.addEventListener("pointermove", function (e) {
+    pending = e;
+    if (raf) return;
+    raf = requestAnimationFrame(function () { raf = null; if (pending) apply(pending); });
+  });
+
+  hero.addEventListener("pointerleave", function () {
+    for (var i = 0; i < marks.length; i++) {
+      var m = marks[i];
+      m.el.style.transform = "translate(" + m.x + "px," + m.y + "px) rotate(" + m.angle + "deg)";
+      m.el.style.stroke = m.stray ? GOLD : MUTED;
+      m.el.style.strokeWidth = m.stray ? 2.5 : 1.5;
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
