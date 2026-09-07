@@ -201,6 +201,19 @@ p, ul, ol { max-width: var(--measure); }
 .person .role { color: var(--aubergine); font-weight: 600; font-size: 0.95rem; margin: 0 0 0.35rem; }
 .person p { font-size: 0.95rem; margin: 0; }
 
+/* ---------- Events ---------- */
+
+.events-figure { margin: 2rem 0 0; }
+.events-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+}
+.events-figure figcaption { font-size: 0.9rem; color: #4a3f57; margin-top: 0.6rem; }
+
 /* ---------- Apply steps ---------- */
 
 .steps { list-style: none; counter-reset: step; padding: 0; margin: 1.5rem 0 0; max-width: var(--measure); }
