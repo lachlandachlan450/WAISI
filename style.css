@@ -290,3 +290,132 @@ p, ul, ol { max-width: var(--measure); }
   .site-footer .inner { grid-template-columns: minmax(0, 1fr); }
   .site-footer .site-nav { flex-direction: row; gap: 0.75rem 1.5rem; }
 }
+
+/* ---------- Expandable sections (details/summary) ---------- */
+
+.drop { max-width: var(--measure); border-top: 1px solid var(--line); }
+.drop:last-of-type { border-bottom: 1px solid var(--line); }
+
+.drop > summary {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.1rem 0;
+  cursor: pointer;
+  list-style: none;          /* hide the default triangle */
+}
+.drop > summary::-webkit-details-marker { display: none; }
+
+.drop .drop-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.drop .teaser {
+  display: block;
+  font-size: 0.95rem;
+  color: #4a3f57;
+  margin-top: 0.15rem;
+}
+.drop > summary:hover .drop-title { color: var(--aubergine); }
+
+/* The +/- indicator, pushed to the right-hand edge */
+.drop > summary::after {
+  content: "+";
+  margin-left: auto;
+  flex: none;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: var(--aubergine);
+}
+.drop[open] > summary::after { content: "\2212"; }   /* minus sign */
+
+.drop-body { padding-bottom: 1.25rem; }
+.drop-body > :first-child { margin-top: 0; }
+.drop-body > :last-child { margin-bottom: 0; }
+
+/* ---------- Events timeline ---------- */
+
+.timeline { list-style: none; padding: 0; margin: 2rem 0 0; max-width: var(--measure); }
+.timeline li {
+  position: relative;
+  padding: 0 0 1.75rem 2rem;
+  border-left: 2px solid var(--line);
+  margin-left: 0.4rem;
+}
+.timeline li:last-child { border-left-color: transparent; padding-bottom: 0; }
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -0.45rem;
+  top: 0.45rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background: var(--aubergine);
+  border: 2px solid var(--paper);
+}
+.timeline .when {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--aubergine);
+  margin: 0;
+}
+.timeline h3 { font-family: var(--font-display); font-size: 1.2rem; margin: 0.1rem 0 0.25rem; }
+.timeline p:last-child { margin: 0; font-size: 0.98rem; }
+
+/* Dates not yet fixed */
+.timeline li.tbc h3::after {
+  content: "to be confirmed";
+  display: inline-block;
+  margin-left: 0.6rem;
+  vertical-align: middle;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--aubergine-deep);
+  background: var(--lilac);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+}
+/* Breaks and other non-events sit back a little */
+.timeline li.quiet::before { background: var(--line); }
+.timeline li.quiet .when { color: #6c6079; }
+.timeline li.quiet h3 { font-weight: 400; color: #4a3f57; }
+
+/* ---------- Outline button (for use on the pale page background) ---------- */
+
+.button.outline {
+  background: transparent;
+  color: var(--aubergine);
+  border: 1px solid var(--aubergine);
+  margin-left: 0.75rem;
+}
+.button.outline:hover { background: var(--lilac); color: var(--aubergine-deep); }
+
+/* Buttons wrap rather than overflow on narrow screens */
+@media (max-width: 480px) {
+  .button { display: block; text-align: center; }
+  .button.quiet, .button.outline { margin-left: 0; margin-top: 0.75rem; }
+}
+
+/* ---------- Criteria list (mentor page) ---------- */
+
+.criteria { max-width: var(--measure); margin: 1.5rem 0 0; }
+.criteria dt {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--aubergine);
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+.criteria dd { margin: 0.35rem 0 1rem; }
+.criteria dd:last-child { margin-bottom: 0; }
