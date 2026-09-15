@@ -1,184 +1,112 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Warwick AI Safety Initiative</title>
-  <meta name="description" content="WAISI is a community working on AI safety. We run a remote research fellowship, hackathons and a hands-on technical bootcamp, open to anyone, not just Warwick students.">
-  <link rel="canonical" href="https://waisi.uk/">
-
-  <!-- Link previews (Discord, WhatsApp, Substack, X). Update og:image if you
-       replace images/og.png. -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Warwick AI Safety Initiative">
-  <meta property="og:title" content="Warwick AI Safety Initiative">
-  <meta property="og:description" content="WAISI is a community working on AI safety. We run a remote research fellowship, hackathons and a hands-on technical bootcamp, open to anyone, not just Warwick students.">
-  <meta property="og:url" content="https://waisi.uk/">
-  <meta property="og:image" content="https://waisi.uk/images/og.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>We've moved to mercial.uk</title>
+  <meta name="description" content="The Warwick AI Safety Initiative is now Mercial. Visit mercial.uk.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://mercial.uk/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="logo.svg">
-  <link rel="apple-touch-icon" href="images/icon-180.png">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header class="site-header">
-  <div class="inner">
-    <a class="wordmark" href="index.html">WAISI<span class="dot">.</span></a>
-    <nav class="site-nav" aria-label="Main">
-      <a href="index.html" aria-current="page">About</a>
-      <a href="people.html">People</a>
-      <a href="events.html">Events</a>
-      <a href="https://waisiuk.substack.com">Blog</a>
-      <a href="get-involved.html">Get Involved</a>
-      <a href="mentors.html">Mentor</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<section class="hero">
-  <!-- Decorative "alignment field": tick marks that mostly agree, a few that don't -->
-  <svg class="field" id="alignment-field" aria-hidden="true" preserveAspectRatio="xMidYMid slice"></svg>
-  <div class="inner">
-    <h1>How can we mitigate catastrophic risk from advanced AI?</h1>
-    <p>The Warwick AI Safety Initiative is a community working on the technical and strategic problems of making powerful AI systems safe. We run a remote research fellowship, hackathons, and a hands-on upskilling bootcamp. All of them are open to anyone, not just Warwick students.</p>
-    <a class="button" href="get-involved.html">See our programmes</a>
-    <a class="button quiet" href="mentors.html">Mentor a fellow</a>
-  </div>
-</section>
-
-<main>
-  <h2>What we do</h2>
-  <div class="activities">
-    <div class="activity">
-      <h3>Research fellowship</h3>
-      <p>Small teams work on technical or conceptual problems in AI safety over a month-long remote fellowship, and produce a write-up, building real research experience. <a href="get-involved.html">Read More</a></p>
-    </div>
-    <div class="activity">
-      <h3>Hackathons</h3>
-      <p>Intensive weekend sprints, including the <a href = "https://apartresearch.com/sprints">Apart Research hackathons</a> — a fast way to try a research idea and see it through to a write-up. <a href="get-involved.html">Read More</a></p>
-    </div>
-    <div class="activity">
-      <h3>Technical bootcamp</h3>
-      <p>An intensive upskilling programme built on the ARENA curriculum: transformer internals, mechanistic interpretability, RL and evals. <a href="get-involved.html">Read More</a></p>
-    </div>
-  </div>
-
-  <h2>Why AI safety</h2>
-  <p>AI capabilities are advancing quickly, and the field of people working to make these systems safe, interpretable and controllable is still small. Applicants with strong conceptual, mathematical or technical backgrounds are unusually well placed to contribute.</p>
-  <p>You don't necessarily need prior machine learning experience to get involved. See <a href="get-involved.html">Get Involved</a> for how you can gain the background knowledge you need for AI safety research.</p>
-</main>
-
-<footer class="site-footer">
-  <div class="inner">
-    <div class="brand">
-      <a class="wordmark wordmark-light" href="index.html">WAISI<span class="dot">.</span></a>
-      <p class="fine">Warwick AI Safety Initiative is independent and not affiliated with the University of Warwick.</p>
-    </div>
-    <nav class="site-nav" aria-label="Footer">
-      <a href="index.html">About</a>
-      <a href="people.html">People</a>
-      <a href="events.html">Events</a>
-      <a href="https://waisiuk.substack.com">Blog</a>
-      <a href="get-involved.html">Get Involved</a>
-      <a href="mentors.html">Mentor</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-
-    <div class="newsletter">
-      <h2>Newsletter</h2>
-      <p>Research, blogs, and application deadlines, sent to your email.</p>
-      <iframe src="https://waisiuk.substack.com/embed" title="Subscribe to the WAISI newsletter" loading="lazy" scrolling="no"></iframe>
-    </div>
-
-  </div>
-</footer>
-
-<script>
-/* Hero tick-mark field. Marks near the pointer turn gold and rotate,
-   then ease back when it moves away. Decorative only. */
-(function () {
-  var svg = document.getElementById("alignment-field");
-  var hero = document.querySelector(".hero");
-  if (!svg || !hero) return;
-
-  var W = 1200, H = 480, gap = 46, len = 14;
-  var GOLD = "#b99a45", MUTED = "#8a6aa6";
-  var TOUCH = 42;        /* marks this close to the pointer always react (SVG units) */
-  var RADIUS = 120;      /* a few "keen" marks also react out to this distance */
-  var KEEN = 0.18;       /* fraction of marks that are keen */
-  var EXTRA_TURN = 38;   /* max additional rotation in degrees */
-
-  svg.setAttribute("viewBox", "0 0 " + W + " " + H);
-  var ns = "http://www.w3.org/2000/svg";
-  var marks = [];
-
-  for (var y = gap / 2; y < H; y += gap) {
-    for (var x = gap / 2; x < W; x += gap) {
-      var stray = Math.random() < 0.07;
-      var angle = stray ? Math.random() * 180 : -18 + (Math.random() * 10 - 5);
-      var line = document.createElementNS(ns, "line");
-      line.setAttribute("x1", -len / 2); line.setAttribute("y1", 0);
-      line.setAttribute("x2", len / 2);  line.setAttribute("y2", 0);
-      line.style.stroke = stray ? GOLD : MUTED;
-      line.style.strokeWidth = stray ? 2.5 : 1.5;
-      line.setAttribute("stroke-linecap", "round");
-      line.style.transform = "translate(" + x + "px," + y + "px) rotate(" + angle + "deg)";
-      line.style.transition = "transform .35s ease, stroke .5s ease, stroke-width .5s ease";
-      svg.appendChild(line);
-      marks.push({ el: line, x: x, y: y, angle: angle, stray: stray, keen: Math.random() < KEEN });
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #e9eef2;
+      --ink: #15263a;
+      --muted: #5d6f82;
+      --rule: #c3ced8;
+      --link: #1f5f9e;
+      --focus: #e0a526;
     }
-  }
-
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-  var pt = svg.createSVGPoint(), raf = null, pending = null;
-
-  function apply(e) {
-    pt.x = e.clientX; pt.y = e.clientY;
-    var ctm = svg.getScreenCTM();
-    if (!ctm) return;
-    var p = pt.matrixTransform(ctm.inverse());
-    for (var i = 0; i < marks.length; i++) {
-      var m = marks[i];
-      var d = Math.hypot(m.x - p.x, m.y - p.y);
-      var reach = m.keen ? RADIUS : TOUCH;
-      if (d < reach) {
-        var t = 1 - d / reach;
-        m.el.style.transform = "translate(" + m.x + "px," + m.y + "px) rotate(" + (m.angle + t * EXTRA_TURN) + "deg)";
-        m.el.style.stroke = GOLD;
-        m.el.style.strokeWidth = 2.5;
-      } else if (!m.stray) {
-        m.el.style.transform = "translate(" + m.x + "px," + m.y + "px) rotate(" + m.angle + "deg)";
-        m.el.style.stroke = MUTED;
-        m.el.style.strokeWidth = 1.5;
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #101a25;
+        --ink: #e3ebf2;
+        --muted: #8c9cad;
+        --rule: #2a3a4b;
+        --link: #8cc0f0;
       }
     }
-  }
 
-  hero.addEventListener("pointermove", function (e) {
-    pending = e;
-    if (raf) return;
-    raf = requestAnimationFrame(function () { raf = null; if (pending) apply(pending); });
-  });
+    * { box-sizing: border-box; }
 
-  hero.addEventListener("pointerleave", function () {
-    for (var i = 0; i < marks.length; i++) {
-      var m = marks[i];
-      m.el.style.transform = "translate(" + m.x + "px," + m.y + "px) rotate(" + m.angle + "deg)";
-      m.el.style.stroke = m.stray ? GOLD : MUTED;
-      m.el.style.strokeWidth = m.stray ? 2.5 : 1.5;
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 1.125rem;
+      line-height: 1.55;
+      display: grid;
+      place-items: center;
+      padding: 2rem 1.5rem;
     }
-  });
-})();
-</script>
 
+    main {
+      width: 100%;
+      max-width: 36rem;
+    }
+
+    .old {
+      margin: 0;
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+    }
+
+    .new {
+      margin: 0.1em 0 0;
+      font-size: clamp(2.75rem, 11vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .new a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-color: var(--link);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.12em;
+    }
+
+    .new a:hover { color: var(--link); }
+
+    p {
+      margin: 1.5rem 0 0;
+      max-width: 34em;
+    }
+
+    .aside {
+      margin-top: 2.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--rule);
+      font-size: 1rem;
+      color: var(--muted);
+    }
+
+    a { color: var(--link); }
+
+    a:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="old" aria-hidden="true">waisi.uk</p>
+    <h1 class="new"><a href="https://mercial.uk/">mercial.uk</a></h1>
+
+    <p>This site is no longer active. The Warwick AI Safety Initiative is now <a href="https://mercial.uk/">Mercial</a>, and you'll find our programmes, events and updates at <a href="https://mercial.uk/">mercial.uk</a>.</p>
+
+    <p class="aside">Looking for the Wisconsin AI Safety Initiative? Their site is <a href="https://waisi.org/">waisi.org</a>.</p>
+  </main>
 </body>
 </html>
